@@ -1,6 +1,7 @@
 package com.pragma.powerup.router;
 
 import com.pragma.powerup.handler.RoleHandler;
+import org.springframework.boot.autoconfigure.web.WebProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.reactive.function.server.RouterFunction;
@@ -11,6 +12,11 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 public class RoleRouter {
     private static final String PATH = "rolesFunction";
     private static final String BY_ID = "/{id}";
+
+    @Bean
+    public WebProperties.Resources resources() {
+        return new WebProperties.Resources();
+    }
 
     @Bean
     RouterFunction<ServerResponse> router(RoleHandler handler) {
